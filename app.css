@@ -30,3 +30,27 @@ h1 {
   color: white;
   font-weight: 100;
 }
+
+.result {
+  color: #fff;
+}
+
+.result.success {
+  background-color: #1af;
+}
+
+.result-row {
+  display: flex;
+  border-top: 1px solid currentColor;
+}
+
+.result-cell {
+  flex-grow: 1;
+}
+
+
+
+.result-cell + .result-cell {
+  border-left: 1px solid currentColor;
+}
+
