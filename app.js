@@ -18,7 +18,7 @@ function xx () {
       window.scrollTo(0, 9999999)
 
       
-      document.body.style.backgroundColor = (map.ratio > .5) ? '#1af' : '#000'
+      //document.body.style.backgroundColor = (map.ratio > .5) ? '#1af' : '#000'
       
     }, 2000)
     return
@@ -77,5 +77,10 @@ function starter () {
 
 
 
-starter()
+// starter()
+
 // Pluto que de creer un cercle a chaque fois, on peut recopier le raw data d'un cercle deja genere
+
+
+var slider = new SliderCtrl(3000, console.log);
+document.body.appendChild(slider.el)

@@ -1,6 +1,7 @@
 html, body {
   line-height: 0;
   margin: 0;
+  height: 100%;
   background-color: #fff;
   font-family: sans-serif;
   transition: 1s background-color;
@@ -55,3 +56,80 @@ h1 {
   border-left: 1px solid currentColor;
 }
 
+
+
+
+
+.slider-ctrl {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-weight: 100;
+  background-color: black;
+  border-bottom: 1px solid #fff;
+}
+
+.slider-counter {
+  margin: 2rem 0;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.slider-counter:before,
+.slider-counter:after {
+  content: ' ';
+  display: inline-block;
+}
+
+.slider-input-container {
+  position: relative;
+  width: 4rem;
+  flex-grow: 1;
+
+}
+
+.slider-input-thumb {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #fff;
+
+  animation-name: initbounce;
+  animation-duration: 1s; 
+  animation-timing-function: ease-out; 
+  animation-iteration-count: 1;
+}
+.slider-input-thumb.reset {
+  top: 0;
+  transition: .5s top ease;
+}
+
+.slider-input-thumb:before {
+  content: "";
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #1af;
+  border: .5rem solid #000;
+  box-sizing: border-box;
+}
+
+@keyframes initbounce {
+  0%   { top: 75%;}
+  30%  { top: 0;}
+  50%  { top: 20%;}
+  70%  { top: 0;}
+  85%  { top: 5%;}
+  100% { top: 0;}
+}
+
+.slider-intro {
+  line-height: 1;
+}
