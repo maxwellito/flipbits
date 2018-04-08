@@ -1,44 +1,7 @@
-var length = 2000
-var counter = 0
-var starter
-var duration = length * 3
-var dotStack = []
-var exp = x => x// 1-Math.pow(1-x,6)
 
-var pos = 0
 
-function xx () {
-  var ratio = (Date.now() - starter) / duration
 
-  if (ratio > 1) {
-    setTimeout(function () {
-      var end = document.createElement('h1')
-      end.textContent = (map.ratio * 100).toFixed(2)
-      document.body.appendChild(end)
-      window.scrollTo(0, 9999999)
 
-      
-      //document.body.style.backgroundColor = (map.ratio > .5) ? '#1af' : '#000'
-      
-    }, 2000)
-    return
-  }
-  var toReach = Math.floor(exp(ratio) * map.size);
-
-  var dot
-  console.time('xx')
-  for (; counter < toReach; counter++) {
-    dot = blast(counter, length)
-    grid.setDot(dot, map.stack[dot])
-  }
-  console.timeEnd('xx')
-  
-  window.scrollTo(0, (grid.lines * grid.unitSize)*exp(ratio) - 400)
-  requestAnimationFrame(xx)
-
-}
-
-let dotLength, dotWidth, padding
 
 
 var redirectLength = 84,
@@ -58,29 +21,64 @@ function blast (x, max) {
   }
 }
 
-let map, grid;
 
-function starter () {
-  starter = Date.now()
-  counter = 0
 
+
+
+
+function App () {
+
+  this.dotLength = 0;
+  this.windowRect = document.body.getBoundingClientRect()
   
+  // Init slider
+  this.slider = new SliderCtrl(3000, this.start.bind(this))
+  document.body.appendChild(this.slider.el)
 
-  map = new Mapper(length);
-  grid = new Grid(length, 4, 8)
+  this.grid = new Grid(4, 8)
+  document.body.appendChild(this.grid.el);
 
-  xx()
+  // Binded listeners
+  this.scrollBinded = this.scroll.bind(this)
 }
 
+App.prototype.start = function (dotLength) {
+  this.dotLength = dotLength
+  this.duration = dotLength * 3
+  this.starter = Date.now()
+  this.counter = 0
+  
+  this.map = new Mapper(dotLength);
+  this.grid.setup(dotLength, this.windowRect.width)
 
+  this.scroll()
+}
 
+App.prototype.scroll = function () {
+  var ratio = (Date.now() - this.starter) / this.duration
 
+  if (ratio > 1) {
+    this.scrollEnd()
+    return
+  }
+  var toReach = Math.floor(ratio * this.map.size);
 
+  var dot
+  for (; this.counter < toReach; this.counter++) {
+    dot = blast(this.counter, this.dotLength)
+    this.grid.setDot(dot, this.map.stack[dot])
+  }
+  
+  window.scrollTo(0, this.windowRect.height + (this.grid.lines * this.grid.unitSize)*ratio - 400)
+  requestAnimationFrame(this.scrollBinded)
+}
 
-// starter()
+App.prototype.scrollEnd = function () {
 
-// Pluto que de creer un cercle a chaque fois, on peut recopier le raw data d'un cercle deja genere
+  var end = document.createElement('h1')
+  end.textContent = (this.map.ratio * 100).toFixed(2)
+  document.body.appendChild(end)
+  window.scrollTo(0, 9999999)
+}
 
-
-var slider = new SliderCtrl(3000, console.log);
-document.body.appendChild(slider.el)
+new App ()

@@ -34,25 +34,3 @@ Mapper.prototype.routing = function (fillLength) {
     }
   }
 }
-
-
-
-
-// console.time('#10   ')
-// let ten = new Mapper(10, .4)
-// console.timeEnd('#10   ')
-
-console.time('#100  ')
-let hundred = new Mapper(100, .4)
-console.timeEnd('#100  ')
-
-for (let i = 0; i < 10; i++)
-  console.log(hundred.stack.slice(i*10,(i+1)*10))
-// console.time('#1000 ')
-// let thousand = new Mapper(1000, .4)
-// console.timeEnd('#1000 ')
-
-
-// console.time('#10000')
-// let tenthousand = new Mapper(10000, .4)
-// console.timeEnd('#10000')
