@@ -38,6 +38,9 @@ function App () {
   this.grid = new Grid(4, 8)
   document.body.appendChild(this.grid.el);
 
+  this.summary = new SummaryCtrl(this.retry.bind(this))
+  document.body.appendChild(this.summary.el)
+
   // Binded listeners
   this.scrollBinded = this.scroll.bind(this)
 }
@@ -74,11 +77,13 @@ App.prototype.scroll = function () {
 }
 
 App.prototype.scrollEnd = function () {
-
-  var end = document.createElement('h1')
-  end.textContent = (this.map.ratio * 100).toFixed(2)
-  document.body.appendChild(end)
+  debugger;
+  this.summary.set(this.dotLength, this.map.posPins)
   window.scrollTo(0, 9999999)
+}
+
+App.prototype.retry = function () {
+  window.scrollTo(0, 0)
 }
 
 new App ()

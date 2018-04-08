@@ -2,36 +2,22 @@ html, body {
   line-height: 0;
   margin: 0;
   height: 100%;
+  font-weight: 100;
+  color: #fff;
   background-color: #000;
   font-family: sans-serif;
   transition: 1s background-color;
 }
 
-.dot {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  margin: .125rem;
-}
-
-.dot.on {
-  background-color: #1af;
-}
-.dot.off {
-  background-color: #eee;
+.small {
+  font-size: .5em;
 }
 
 canvas {
-  margin: auto;
+  margin: 1rem auto;
   display: block;
 }
 
-h1 {
-  text-align: center;
-  color: white;
-  font-weight: 100;
-}
 
 .result {
   color: #fff;
@@ -55,6 +41,13 @@ h1 {
 .result-cell + .result-cell {
   border-left: 1px solid currentColor;
 }
+
+
+
+
+
+
+
 
 
 
@@ -131,4 +124,43 @@ h1 {
 
 .slider-intro {
   line-height: 1;
+}
+
+
+
+
+
+
+.summary-ctrl {
+
+}
+
+
+.summary-bloc {
+  display: flex;
+}
+
+
+.summary-item {
+  flex-grow: 1;
+  border: none;
+  border-top: 1px solid #fff;
+  background: none;
+  padding: 1rem;
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 1;
+}
+
+.summary-item + .summary-item {
+  border-left: 1px solid #fff;
+}
+
+.summary-counter {
+  font-size: 4rem;
+  padding: 4rem 0;
 }
