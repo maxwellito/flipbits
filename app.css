@@ -1,8 +1,9 @@
 html, body {
   line-height: 0;
   margin: 0;
-  background-color: #000;
+  background-color: #fff;
   font-family: sans-serif;
+  transition: 1s background-color;
 }
 
 .dot {

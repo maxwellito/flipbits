@@ -37,7 +37,7 @@ Grid.prototype.setup = function () {
   document.body.appendChild(this.el);
 }
 
-Grid.prototype.setDot = function (index, isPos) {
+Grid.prototype.setDoddt = function (index, isPos) {
   var dotData, dotPos;
 
   if ((isPos && !this.posData) || (!isPos && !this.negData)) {
@@ -61,7 +61,7 @@ Grid.prototype.setDot = function (index, isPos) {
   }
 }
 
-Grid.prototype.createDot = function (index, isPos) {
+Grid.prototype.setDot = function (index, isPos) {
   var pos = this.getPos(index);
 
   this.ctx.beginPath();
@@ -69,12 +69,12 @@ Grid.prototype.createDot = function (index, isPos) {
   this.ctx.arc(pos.x, pos.y, this.dotRadius, 0, 2 * Math.PI);
   this.ctx.fill();
 
-  return this.ctx.getImageData(
-    (pos.x - this.dotRadius) * this.scale,
-    (pos.y - this.dotRadius) * this.scale,
-    (this.dotWidth) * this.scale,
-    (this.dotWidth) * this.scale
-  );
+  // return this.ctx.getImageData(
+  //   (pos.x - this.dotRadius) * this.scale,
+  //   (pos.y - this.dotRadius) * this.scale,
+  //   (this.dotWidth) * this.scale,
+  //   (this.dotWidth) * this.scale
+  // );
 };
 
 Grid.prototype.getPos = function (index) {
