@@ -18,7 +18,8 @@ function SummaryCtrl (retryCallback) {
 SummaryCtrl.prototype.setupTemplate = function () {
   this.counterDigit = dom.create('span');
   this.counterDecimal = dom.create('span', 'small');
-  this.counterEl = dom.create('p', 'summary-item summary-counter', [this.counterDigit, this.counterDecimal])
+  var counterWrap = dom.create('p', 'summary-counter-wrap', [this.counterDigit, this.counterDecimal])
+  this.counterEl = dom.create('div', 'summary-counter', [counterWrap])
 
   this.detailsPosEl = dom.create('div', 'summary-item')
   this.detailsNegEl = dom.create('div', 'summary-item')
@@ -43,9 +44,21 @@ SummaryCtrl.prototype.set = function (dotLength, posDots) {
   // Set the counter
   var value = ((posDots / dotLength) * 100).toFixed(2).split('.');
 
-  this.counterDecimal.textContent = '.' + value[1];
+  this.counterDecimal.textContent = '.' + value[1] + '%';
   this.counterDigit.textContent = value[0];
 
-  this.detailsPosEl.textContent = posDots;
-  this.detailsNegEl.textContent = (dotLength - posDots);
+  this.detailsPosEl.textContent = '• ' + posDots;
+  this.detailsNegEl.textContent = '× ' + (dotLength - posDots);
+
+  this.el.classList.add((dotLength/2) < posDots ? 'success' : 'fail')
+}
+
+SummaryCtrl.prototype.show = function () {
+  this.el.classList.add('ready')
+}
+
+SummaryCtrl.prototype.hide = function () {
+  this.el.classList.remove('ready')
+  this.el.classList.remove('success')
+  this.el.classList.remove('fail')
 }
