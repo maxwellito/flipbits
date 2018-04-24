@@ -31,7 +31,7 @@ App.prototype.start = function (dotLength) {
   this.summary.reset()
   this.summary.show()
 
-  this.scrollLength = this.windowRect.height + (this.grid.lines * this.grid.unitSize)
+  this.scrollLength = this.windowRect.height * 1.2 + (this.grid.lines * this.grid.unitSize)
 
   this.scroll()
 }
@@ -60,7 +60,6 @@ App.prototype.scrollEnd = function () {
   this.slider.reset();
   this.summary.set(this.dotLength, this.map.posPins)
   this.summary.show()
-  window.scrollTo(0, 9999999)
 }
 
 App.prototype.retry = function () {
@@ -69,5 +68,3 @@ App.prototype.retry = function () {
   this.summary.hide()
   this.grid.hide()
 }
-
-new App ()

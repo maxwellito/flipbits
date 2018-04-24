@@ -28,9 +28,37 @@
     <meta name="msapplication-TileColor" content="#14171b">
 
     <link rel="stylesheet" type="text/css" href="app.css">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        color: #fff;
+        font-family: sans-serif;
+        background-color: #000;
+      }
+      * {font-weight: 100;}
+      a {color: inherit;}
+    </style>
   </head>
 
   <body>
+
+    <div id="intro" style="display: flex;height: 100%;justify-content: center;flex-direction: column;align-items: center;">
+      <div style="width: 70%;text-align: center;">
+        <h1>TossBits</h1>
+        <p>
+          Just think about a question that you can answer with a yes or no, then slide down.<br>
+          A modern version of the 8-Ball or a not-environment friendly "toss a coin".<br>
+          Every dot reprensent a simulation.
+        </p>
+        <p id="ready-to-tap" style="opacity: 0; transition: .4s opacity;">Tap to start</p>
+      </div>
+    </div>
+
+    <div style="display: none;">
+      <div id="credits">by <a href="https://twitter.com/mxwllt"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-maxwellito"></use></svg></a> / on <a href="https://github.com/maxwellito/tossbits"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-github"></use></svg></a></div>
+      <div id="social"><a rel="noopener noreferrer" target="_blank" platform="FB" href="https://www.facebook.com/sharer/sharer.php?u=https://maxwellito.github.io/tossbits/"><svg class="icon icon-large"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-facebook"></use></svg></a><a class="summary-share-link" rel="noopener noreferrer" target="_blank" platform="TWITTER" href="http://twitter.com/share?text=TossBits,%20the%20best%20random%20powered%20AI%20to%20take%20decisions&amp;url=https://maxwellito.github.io/tossbits/"><svg class="icon icon-large"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use></svg></a></div>
+    </div>
 
 
     <!-- SVG Icon definitions -->
@@ -66,15 +94,17 @@
       //     .register('service-worker.js', {scope: '.'});
       // }
 
-      
+      // App is ready to start
+      var intro = document.getElementById('intro'),
+          instruction = document.getElementById('ready-to-tap'),
+          start = function () {
+            document.body.removeChild(intro)
+            new App();
+            window.removeEventListener('click', start)
+          };
 
-      // Set up Google Analytics
-      // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      // })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      // ga('create', 'UA-96752793-1', 'auto');
-      // ga('send', 'pageview');
+      instruction.style.opacity = 1
+      window.addEventListener('click', start)
     </script>
   </body>
 </html>

@@ -51,7 +51,7 @@ GridCtrl.prototype.setDot = function (index, isPos) {
   var pos = this.getPos(index);
 
   this.ctx.beginPath();
-  this.ctx.fillStyle = isPos ? '#1af' : '#e00043';
+  this.ctx.fillStyle = isPos ? '#86e0c4' : '#e00043';
   this.ctx.arc(pos.x, pos.y, this.dotRadius, 0, 2 * Math.PI);
   this.ctx.fill();
 };

@@ -1,16 +1,15 @@
 html, body {
-  line-height: 0;
-  margin: 0;
   height: 100%;
-  font-weight: 100;
+  margin: 0;
   color: #fff;
-  background-color: #000;
   font-family: sans-serif;
-  transition: 1s background-color;
+  font-weight: 100;
+  background-color: #000;
 }
 
-.small {
-  font-size: .5em;
+
+a {
+  color: inherit;
 }
 
 canvas {
@@ -18,29 +17,28 @@ canvas {
   display: block;
 }
 
-
-.result {
-  color: #fff;
+.small {
+  font-size: .75em;
 }
 
-.result.success {
-  background-color: #1af;
+.icon, .icon-large {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
 }
 
-.result-row {
-  display: flex;
-  border-top: 1px solid currentColor;
+.icon-large {
+  width: 1.5em;
+  height: 1.5em;
+  margin: -.25em .35em;
 }
 
-.result-cell {
-  flex-grow: 1;
+.icon * {
+  fill: currentColor;
 }
 
 
 
-.result-cell + .result-cell {
-  border-left: 1px solid currentColor;
-}
 
 
 
@@ -168,8 +166,6 @@ canvas {
 }
 
 .summary-item {
-  border: none;
-  border-top: 1px solid #fff;
   background: none;
   padding: 1rem;
   margin: 0;
@@ -182,7 +178,12 @@ canvas {
   outline: none;
 }
 
-.summary-item + .summary-item {
+.summary-item.bordered {
+  border: none;
+  border-top: 1px solid #fff;
+}
+
+.summary-item.bordered + .summary-item.bordered {
   border-left: 1px solid #fff;
 }
 
@@ -196,6 +197,10 @@ canvas {
 
 .summary-counter-wrap {
   font-size: 4rem;
+}
+.summary-counter-wrap-sub {
+  font-size: 2rem;
+  margin: 0;
 }
 
 .pin-pos:before, .pin-neg:before {

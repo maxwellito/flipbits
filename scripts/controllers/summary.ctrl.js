@@ -16,22 +16,29 @@ function SummaryCtrl (retryCallback) {
  * @return {DOMElement}
  */
 SummaryCtrl.prototype.setupTemplate = function () {
+  this.resultEl = dom.create('p', 'summary-counter-wrap')
   this.counterDigitEl = dom.create('span');
   this.counterDecimalEl = dom.create('span', 'small');
-  var counterWrap = dom.create('p', 'summary-counter-wrap', [this.counterDigitEl, this.counterDecimalEl])
-  this.resultEl = dom.create('p')
-  this.counterEl = dom.create('div', 'summary-counter', [counterWrap, this.resultEl])
+  var counterWrap = dom.create('p', 'summary-counter-wrap-sub', [this.counterDigitEl, this.counterDecimalEl])
+  this.counterEl = dom.create('div', 'summary-counter', [this.resultEl, counterWrap])
 
   this.detailsPosEl = dom.create('div', 'summary-item pin-pos')
   this.detailsNegEl = dom.create('div', 'summary-item pin-neg')
   this.detailsEl = dom.create('div', 'summary-bloc', [this.detailsPosEl, this.detailsNegEl])
 
-  this.resetEl = dom.create('button', 'summary-item', 'Retry')
+  this.resetEl = dom.create('button', 'summary-item bordered', 'RETRY')
   this.resetEl.addEventListener('click', this.retryCallback)
+  this.resetEl.addEventListener('touchend', this.retryCallback)
+
+  var credits = document.getElementById('credits')
+  var social = document.getElementById('social')
+  credits.classList.add('summary-item', 'bordered')
+  social.classList.add('summary-item', 'bordered')
+  var bottomline = dom.create('div', 'summary-bloc', [credits, social])
 
   this.el = dom.create('div', 'summary-ctrl', [
     this.counterEl,
-    dom.create('div', '', [this.detailsEl, this.resetEl])
+    dom.create('div', '', [this.detailsEl, this.resetEl, bottomline])
   ]);
 }
 
@@ -53,11 +60,11 @@ SummaryCtrl.prototype.set = function (dotLength, posDots) {
   var extraPosDots = posDots - (dotLength/2)
   if (extraPosDots > 0) {
     this.el.classList.add('success')
-    this.resultEl.textContent = 'WIN!'
+    this.resultEl.textContent = 'Yas!'
   }
   else if (extraPosDots < 0) {
     this.el.classList.add('fail')
-    this.resultEl.textContent = 'Lose.'
+    this.resultEl.textContent = 'Nope.'
   }
   else {
     this.resultEl.textContent = 'Try again'
