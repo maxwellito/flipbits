@@ -61,7 +61,6 @@ canvas {
   height: 100%;
   color: #fff;
   font-weight: 100;
-  border-bottom: 1px solid #fff;
 }
 
 .slider-counter {
@@ -134,10 +133,14 @@ canvas {
 .summary-ctrl {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   text-align: center;
   overflow: hidden;
   background-color: #000;
+  transition: none;
+}
+
+.summary-ctrl.ready {
   transition: background-color 2s ease .8s;
 }
 
@@ -172,9 +175,11 @@ canvas {
   margin: 0;
   color: inherit;
   font-size: inherit;
+  font-weight: inherit;
   display: block;
   width: 100%;
   line-height: 1;
+  outline: none;
 }
 
 .summary-item + .summary-item {
@@ -190,6 +195,26 @@ canvas {
 }
 
 .summary-counter-wrap {
-  margin: 0;
   font-size: 4rem;
 }
+
+.pin-pos:before, .pin-neg:before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  margin: 0 .5em;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.pin-pos:before {
+  background-color: #1af;
+}
+
+.pin-neg:before {
+  background-color: rgb(224, 0, 67);
+}
+

@@ -1,4 +1,4 @@
-function Grid (dotWidth, padding) {
+function GridCtrl (dotWidth, padding) {
   this.dotLength = null;
   this.dotWidth = dotWidth;
   this.dotRadius = this.dotWidth/2;
@@ -11,11 +11,11 @@ function Grid (dotWidth, padding) {
   this.setupTemplate()
 }
 
-Grid.prototype.setupTemplate = function () {
+GridCtrl.prototype.setupTemplate = function () {
   this.el = dom.create('div')
 }
 
-Grid.prototype.setup = function (dotLength, canvasWidth) {
+GridCtrl.prototype.setup = function (dotLength, canvasWidth) {
 
   // Set and reset
   this.dotLength = dotLength;
@@ -47,18 +47,26 @@ Grid.prototype.setup = function (dotLength, canvasWidth) {
   this.el.appendChild(this.canvas)
 }
 
-Grid.prototype.setDot = function (index, isPos) {
+GridCtrl.prototype.setDot = function (index, isPos) {
   var pos = this.getPos(index);
 
   this.ctx.beginPath();
-  this.ctx.fillStyle = isPos ? '#1af' : '#222';
+  this.ctx.fillStyle = isPos ? '#1af' : '#e00043';
   this.ctx.arc(pos.x, pos.y, this.dotRadius, 0, 2 * Math.PI);
   this.ctx.fill();
 };
 
-Grid.prototype.getPos = function (index) {
+GridCtrl.prototype.getPos = function (index) {
   return {
     x: ((index % this.rowLength) + .5) * this.unitSize,
     y: (Math.floor(index/this.rowLength) + .5) * this.unitSize
   };
 };
+
+GridCtrl.prototype.show = function () {
+  this.el.style.display = '';
+}
+
+GridCtrl.prototype.hide = function () {
+  this.el.style.display = 'none';
+}

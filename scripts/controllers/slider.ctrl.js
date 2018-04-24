@@ -30,7 +30,7 @@ SliderCtrl.prototype.setupTemplate = function () {
   this.counterEl = dom.create('p', 'slider-counter', ' ')
   this.inputThumbEl = dom.create('div', 'slider-input-thumb')
   this.inputContainerEl = dom.create('div', 'slider-input-container', [this.inputThumbEl])
-  this.introEl = dom.create('p', 'slider-intro', 'Slide the button to trigger the randomiser')
+  this.introEl = dom.create('p', 'slider-intro', 'Slide down the circle to trigger')
 
   this.inputThumbEl.addEventListener('touchstart', this.slideStartBinded)
   this.inputThumbEl.addEventListener('mousedown', this.slideStartBinded)
@@ -49,9 +49,7 @@ SliderCtrl.prototype.setupTemplate = function () {
  * Reset the controller
  */
 SliderCtrl.prototype.reset = function () {
-  this.slideEnd();
   this.counterEl.textContent = ''
-  
 }
 
 // Listeners
@@ -93,9 +91,14 @@ SliderCtrl.prototype.slideUpdate = function (e) {
       translate = Math.min(this.inputHeight, Math.max(0, newPos - this.slideStart)),
       ratio = translate / this.inputHeight;
 
+  let oldValue = this.value || 0
   this.value = Math.floor(this.rangeMax * ratio)
   this.counterEl.textContent = this.value
   this.inputThumbEl.style.top = translate + 'px'
+
+  if (Math.floor(oldValue/500)!==Math.floor(this.value/500) && navigator.vibrate) {
+    navigator.vibrate(20)
+  }
 }
 
 /**
@@ -119,6 +122,8 @@ SliderCtrl.prototype.slideEnd = function (e) {
   window.removeEventListener('mouseup', this.slideEndBinded)
 
   // Trigger callback
-  this.callback(this.value)
+  if (this.value) {
+    this.callback(this.value)
+  }
   this.value = null
 }

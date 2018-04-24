@@ -2,10 +2,17 @@ function Mapper (size, ratio) {
   this.size = size;
   this.stack = new Int8Array(size);
 
-  this.ratio = ratio || Math.random();
-  this.posPins = Math.round(this.ratio * this.size)
-  this.negPins = this.size - this.posPins;
-  this.fill()
+  if (ratio !== undefined) {
+    this.ratio = ratio;
+    this.posPins = Math.round(this.ratio * this.size)
+    this.negPins = this.size - this.posPins;
+    this.fill()
+  }
+  else {
+    this.posPins = 0
+    this.negPins = 0
+    this.randomFill()
+  }
 }
 
 Mapper.prototype.fill = function () {
@@ -31,6 +38,20 @@ Mapper.prototype.routing = function (fillLength) {
     if (!this.stack[pos]) {
       this.stack[pos] = 1;
       fillLength--;
+    }
+  }
+}
+
+Mapper.prototype.randomFill = function () {
+  let val
+  for (var i = 0; i < this.size; i++) {
+    val = Math.round(Math.random())
+    this.stack[i] = val
+    if (val) {
+      this.posPins++
+    }
+    else {
+      this.negPins++
     }
   }
 }
