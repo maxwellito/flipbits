@@ -77,7 +77,36 @@ canvas {
   position: relative;
   width: 4rem;
   flex-grow: 1;
+}
+.slider-input-container:before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  bottom: 2rem;
+  left: 2rem;
+  border-left: 1px solid #fff;
+}
 
+.slider-input-ruler {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  top: 2rem;
+  bottom: 2rem;
+  z-index: 5;
+}
+.slider-input-ruler-large,
+.slider-input-ruler-thin {
+  width: 100%;
+  border-top: 1px solid #fff;
+  box-sizing: border-box;
+}
+.slider-input-ruler-thin {
+  width: 80%;
+  border-color: #999;
+  margin: 0 10%;
 }
 
 .slider-input-thumb {
@@ -86,6 +115,7 @@ canvas {
   height: 4rem;
   border-radius: 50%;
   background-color: #fff;
+  z-index: 10;
 
   animation-name: initbounce;
   animation-duration: 1s; 
@@ -176,6 +206,7 @@ canvas {
   width: 100%;
   line-height: 1;
   outline: none;
+  box-sizing: border-box;
 }
 
 .summary-item.bordered {

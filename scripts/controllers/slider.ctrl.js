@@ -28,18 +28,29 @@ function SliderCtrl (rangeMax, callback) {
 SliderCtrl.prototype.setupTemplate = function () {
   
   this.counterEl = dom.create('p', 'slider-counter', ' ')
+  
+  var x, y, rules = [dom.create('div', 'slider-input-ruler-large')]
+  for (x = 0; x < 6; x++) {
+    for (y = 0; y < 4; y++) {
+      rules.push(dom.create('div', 'slider-input-ruler-thin'))
+    }
+    rules.push(dom.create('div', 'slider-input-ruler-large'))
+  }
+  var inputRuler = dom.create('div', 'slider-input-ruler', rules)
   this.inputThumbEl = dom.create('div', 'slider-input-thumb')
-  this.inputContainerEl = dom.create('div', 'slider-input-container', [this.inputThumbEl])
-  this.introEl = dom.create('p', 'slider-intro', 'Slide down the circle to trigger')
+  this.inputContainerEl = dom.create('div', 'slider-input-container', [inputRuler, this.inputThumbEl])
 
-  this.inputThumbEl.addEventListener('touchstart', this.slideStartBinded)
-  this.inputThumbEl.addEventListener('mousedown', this.slideStartBinded)
+  var introEl = dom.create('p', 'slider-intro', 'Slide down the circle to trigger')
 
   this.el = dom.create('div', 'slider-ctrl', [
     this.counterEl,
     this.inputContainerEl,
-    this.introEl
+    introEl
   ])
+
+  this.inputThumbEl.addEventListener('touchstart', this.slideStartBinded)
+  this.inputThumbEl.addEventListener('mousedown', this.slideStartBinded)
+
   return this.el
 }
 

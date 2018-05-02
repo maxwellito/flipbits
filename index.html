@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Slidom</title>
+    <title>FlipBits</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- <link rel="shortcut icon" href="assets/favicon.ico"> -->
@@ -16,7 +16,7 @@
     <link rel="apple-touch-startup-image" href="assets/ios-startup/startup-640x1136.png" media="(device-width: 320px) and (device-height: 568px)">
     <link rel="apple-touch-startup-image" href="assets/ios-startup/startup-640x960.png"  media="(device-width: 320px) and (device-height: 480px)"> -->
     
-    <meta name="apple-mobile-web-app-title" content="BreakLock">
+    <meta name="apple-mobile-web-app-title" content="FlipBits">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 
     <!-- <meta name="msapplication-TileImage" content="assets/icons/icon-144x144.png"> -->
-    <meta name="msapplication-TileColor" content="#14171b">
+    <meta name="msapplication-TileColor" content="#000000">
 
     <link rel="stylesheet" type="text/css" href="app.css">
     <style>
@@ -38,26 +38,35 @@
       }
       * {font-weight: 100;}
       a {color: inherit;}
+      .pill {
+        background: none;
+        border: 1px solid currentColor;
+        font-size: inherit;
+        color: inherit;
+        border-radius: 1em;
+        padding: .25em 1em;
+      }
     </style>
   </head>
 
   <body>
 
-    <div id="intro" style="display: flex;height: 100%;justify-content: center;flex-direction: column;align-items: center;">
+    <div id="intro" style="display: flex;height: 100%;justify-content: space-around;flex-direction: column;align-items: center;">
+      <div></div>
       <div style="width: 70%;text-align: center;">
-        <h1>TossBits</h1>
+        <h1>FlipBits</h1>
         <p>
           Just think about a question that you can answer with a yes or no, then slide down.<br>
           A modern version of the 8-Ball or a not-environment friendly "toss a coin".<br>
           Every dot reprensent a simulation.
         </p>
-        <p id="ready-to-tap" style="opacity: 0; transition: .4s opacity;">Tap to start</p>
+        <button id="ready-to-tap" class="pill" style="opacity: 0; transition: .4s opacity;">Tap to start</button>
       </div>
+      <p id="credits">by <a href="https://twitter.com/mxwllt"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-maxwellito"></use></svg></a> / on <a href="https://github.com/maxwellito/flipbits"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-github"></use></svg></a></p>
     </div>
 
     <div style="display: none;">
-      <div id="credits">by <a href="https://twitter.com/mxwllt"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-maxwellito"></use></svg></a> / on <a href="https://github.com/maxwellito/tossbits"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-github"></use></svg></a></div>
-      <div id="social"><a rel="noopener noreferrer" target="_blank" platform="FB" href="https://www.facebook.com/sharer/sharer.php?u=https://maxwellito.github.io/tossbits/"><svg class="icon icon-large"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-facebook"></use></svg></a><a class="summary-share-link" rel="noopener noreferrer" target="_blank" platform="TWITTER" href="http://twitter.com/share?text=TossBits,%20the%20best%20random%20powered%20AI%20to%20take%20decisions&amp;url=https://maxwellito.github.io/tossbits/"><svg class="icon icon-large"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use></svg></a></div>
+      <div id="social"><a rel="noopener noreferrer" target="_blank" platform="FB" href="https://www.facebook.com/sharer/sharer.php?u=https://maxwellito.github.io/flipbits/"><svg class="icon icon-large"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-facebook"></use></svg></a><a class="summary-share-link" rel="noopener noreferrer" target="_blank" platform="TWITTER" href="http://twitter.com/share?text=FlipBits,%20the%20best%20random%20powered%20AI%20to%20take%20decisions&amp;url=https://maxwellito.github.io/flipbits/"><svg class="icon icon-large"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use></svg></a></div>
     </div>
 
 

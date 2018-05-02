@@ -22,23 +22,22 @@ SummaryCtrl.prototype.setupTemplate = function () {
   var counterWrap = dom.create('p', 'summary-counter-wrap-sub', [this.counterDigitEl, this.counterDecimalEl])
   this.counterEl = dom.create('div', 'summary-counter', [this.resultEl, counterWrap])
 
-  this.detailsPosEl = dom.create('div', 'summary-item pin-pos')
-  this.detailsNegEl = dom.create('div', 'summary-item pin-neg')
-  this.detailsEl = dom.create('div', 'summary-bloc', [this.detailsPosEl, this.detailsNegEl])
-
-  this.resetEl = dom.create('button', 'summary-item bordered', 'RETRY')
+  this.resetEl = dom.create('button', 'pill', 'RETRY')
   this.resetEl.addEventListener('click', this.retryCallback)
   this.resetEl.addEventListener('touchend', this.retryCallback)
+  var reset = dom.create('div', 'summary-bloc summary-item', [this.resetEl])
 
-  var credits = document.getElementById('credits')
+  this.detailsPosEl = dom.create('div', 'summary-item bordered pin-pos')
+  this.detailsNegEl = dom.create('div', 'summary-item bordered pin-neg')
+  this.detailsEl = dom.create('div', 'summary-bloc', [this.detailsPosEl, this.detailsNegEl])
+
   var social = document.getElementById('social')
-  credits.classList.add('summary-item', 'bordered')
-  social.classList.add('summary-item', 'bordered')
-  var bottomline = dom.create('div', 'summary-bloc', [credits, social])
+  social.classList.add('summary-bloc', 'summary-item', 'bordered')
 
   this.el = dom.create('div', 'summary-ctrl', [
     this.counterEl,
-    dom.create('div', '', [this.detailsEl, this.resetEl, bottomline])
+    reset,
+    dom.create('div', '', [this.detailsEl, social])
   ]);
 }
 
