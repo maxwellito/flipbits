@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "uglifyjs -o app.js --compress --mangle -- scripts/**/*.js scripts/index.js"
+    "script": "uglifyjs -o app.js --compress --mangle -- src/**/*.js src/index.js",
+    "css": "uglifycss src/**/*.css src/*.css --output app.css",
+    "build": "npm run script && npm run css"
   },
   "repository": {
     "type": "git",
@@ -14,6 +16,7 @@
   "author": "maxwellito",
   "license": "MIT",
   "dependencies": {
-    "uglify-js": "^3.3.23"
+    "uglify-js": "^3.3.23",
+    "uglifycss": "0.0.29"
   }
 }

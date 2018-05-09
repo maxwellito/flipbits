@@ -1,0 +1,101 @@
+.slider-ctrl {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-weight: 100;
+}
+
+.slider-counter {
+  margin: 2rem 0;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.slider-counter:before,
+.slider-counter:after {
+  content: ' ';
+  display: inline-block;
+}
+
+.slider-input-container {
+  position: relative;
+  width: 4rem;
+  flex-grow: 1;
+}
+.slider-input-container:before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  bottom: 2rem;
+  left: 2rem;
+  border-left: 1px solid #fff;
+}
+
+.slider-input-ruler {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  top: 2rem;
+  bottom: 2rem;
+  z-index: 5;
+}
+.slider-input-ruler-large,
+.slider-input-ruler-thin {
+  width: 100%;
+  border-top: 1px solid #fff;
+  box-sizing: border-box;
+}
+.slider-input-ruler-thin {
+  width: 80%;
+  border-color: #999;
+  margin: 0 10%;
+}
+
+.slider-input-thumb {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #fff;
+  z-index: 10;
+
+  animation-name: initbounce;
+  animation-duration: 1s; 
+  animation-timing-function: ease-out; 
+  animation-iteration-count: 1;
+}
+.slider-input-thumb.reset {
+  top: 0;
+  transition: .5s top ease;
+}
+
+.slider-input-thumb:before {
+  content: "";
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #1af;
+  border: .5rem solid #000;
+  box-sizing: border-box;
+}
+
+@keyframes initbounce {
+  0%   { top: 75%;}
+  30%  { top: 0;}
+  50%  { top: 20%;}
+  70%  { top: 0;}
+  85%  { top: 5%;}
+  100% { top: 0;}
+}
+
+.slider-intro {
+  line-height: 1;
+}
