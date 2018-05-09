@@ -1,0 +1,19 @@
+{
+  "name": "flipbits",
+  "version": "1.0.0",
+  "description": "the best random powered AI to take decisions",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "uglifyjs -o app.js --compress --mangle -- scripts/**/*.js scripts/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@raspberrypi:maxwellito/slidom.git"
+  },
+  "author": "maxwellito",
+  "license": "MIT",
+  "dependencies": {
+    "uglify-js": "^3.3.23"
+  }
+}
