@@ -4,17 +4,12 @@
     <title>FlipBits</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- <link rel="shortcut icon" href="assets/favicon.ico"> -->
-    <meta name="theme-color" content="#000">
-
-    <!-- <link rel="manifest" href="manifest.json"> -->
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Add to home screen for Safari on iOS -->
-    <!-- <link rel="apple-touch-icon" href="assets/icons/ios-180x180.png">
-    <link rel="apple-touch-startup-image" href="assets/ios-startup/startup-640x1136.png" media="device-width: 375px">
-    <link rel="apple-touch-startup-image" href="assets/ios-startup/startup-1080x1920.png" media="device-width: 414px">
-    <link rel="apple-touch-startup-image" href="assets/ios-startup/startup-640x1136.png" media="(device-width: 320px) and (device-height: 568px)">
-    <link rel="apple-touch-startup-image" href="assets/ios-startup/startup-640x960.png"  media="(device-width: 320px) and (device-height: 480px)"> -->
+    <link rel="apple-touch-icon" href="assets/icon-256x256.png">
     
     <meta name="apple-mobile-web-app-title" content="FlipBits">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -24,10 +19,9 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 
-    <!-- <meta name="msapplication-TileImage" content="assets/icons/icon-144x144.png"> -->
+    <meta name="msapplication-TileImage" content="assets/icon-256x256.png">
     <meta name="msapplication-TileColor" content="#000000">
 
-    <link rel="stylesheet" type="text/css" href="app.css">
     <style>
       html, body {
         height: 100%;
@@ -50,7 +44,6 @@
   </head>
 
   <body>
-
     <div id="intro" style="display: flex;height: 100%;justify-content: space-around;flex-direction: column;align-items: center;">
       <div></div>
       <div style="width: 70%;text-align: center;">
@@ -58,7 +51,7 @@
         <p>
           Just think about a question that you can answer with a yes or no, then slide down.<br>
           A modern version of the 8-Ball or a not-environment friendly "toss a coin".<br>
-          Every dot reprensent a simulation.
+          Every dot represent a simulation.
         </p>
         <button id="ready-to-tap" class="pill" style="opacity: 0; transition: .4s opacity;">Tap to start</button>
       </div>
@@ -68,7 +61,6 @@
     <div style="display: none;">
       <div id="social"><a rel="noopener noreferrer" target="_blank" platform="FB" href="https://www.facebook.com/sharer/sharer.php?u=https://maxwellito.github.io/flipbits/"><svg class="icon icon-large"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-facebook"></use></svg></a><a class="summary-share-link" rel="noopener noreferrer" target="_blank" platform="TWITTER" href="http://twitter.com/share?text=FlipBits,%20the%20best%20random%20powered%20AI%20to%20take%20decisions&amp;url=https://maxwellito.github.io/flipbits/"><svg class="icon icon-large"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use></svg></a></div>
     </div>
-
 
     <!-- SVG Icon definitions -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -86,17 +78,10 @@
       </symbol>
     </svg>
 
-
+    <link rel="stylesheet" type="text/css" href="app.css">
     <script src="app.js"></script>
 
     <script type="text/javascript">
-
-      // Set up service worker
-      // if ('serviceWorker' in navigator) {
-      //   navigator.serviceWorker
-      //     .register('service-worker.js', {scope: '.'});
-      // }
-
       // App is ready to start
       var intro = document.getElementById('intro'),
           instruction = document.getElementById('ready-to-tap'),
@@ -108,6 +93,12 @@
 
       instruction.style.opacity = 1
       window.addEventListener('click', start)
+
+      // Set up service worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('service-worker.js', {scope: '.'});
+      }
     </script>
   </body>
 </html>

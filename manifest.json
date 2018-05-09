@@ -1,0 +1,14 @@
+{
+  "name": "FlipBits",
+  "short_name": "FlipBits",
+  "icons": [{
+      "src": "./assets/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }],
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

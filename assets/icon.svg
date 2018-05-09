@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="120px" height="120px" viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve">
+<path display="none" d="M119,99c0,11-9,20-20,20H21c-11,0-20-9-20-20V21C1,10,10,1,21,1h78c11,0,20,9,20,20V99z"/>
+<radialGradient id="SVGID_1_" cx="9.5" cy="9" r="143.7502" gradientUnits="userSpaceOnUse">
+	<stop  offset="0.0011" style="stop-color:#11AAFF"/>
+	<stop  offset="1" style="stop-color:#E0002F"/>
+</radialGradient>
+<path display="none" fill="url(#SVGID_1_)" d="M99,7c7.72,0,14,6.28,14,14v78c0,7.72-6.28,14-14,14H21c-7.72,0-14-6.28-14-14V21
+	c0-7.72,6.28-14,14-14H99 M99,1H21C10,1,1,10,1,21v78c0,11,9,20,20,20h78c11,0,20-9,20-20V21C119,10,110,1,99,1L99,1z"/>
+<path fill="#FFFFFF" d="M99,7c7.72,0,14,6.28,14,14v78c0,7.72-6.28,14-14,14H21c-7.72,0-14-6.28-14-14V21c0-7.72,6.28-14,14-14H99
+	 M99,1H21C10,1,1,10,1,21v78c0,11,9,20,20,20h78c11,0,20-9,20-20V21C119,10,110,1,99,1L99,1z"/>
+<g>
+	<circle fill="#11AAFF" cx="24" cy="24" r="3"/>
+	<circle fill="#E0002F" cx="24" cy="60" r="3"/>
+	<circle fill="#11AAFF" cx="24" cy="96" r="3"/>
+	<circle fill="#E0002F" cx="60" cy="24" r="3"/>
+	<circle fill="#11AAFF" cx="60" cy="60" r="3"/>
+	<circle fill="#11AAFF" cx="60" cy="96" r="3"/>
+	<circle fill="#11AAFF" cx="78" cy="24" r="3"/>
+	<circle fill="#11AAFF" cx="78" cy="60" r="3"/>
+	<circle fill="#11AAFF" cx="78" cy="96" r="3"/>
+	<circle fill="#E0002F" cx="42" cy="24" r="3"/>
+	<circle fill="#E0002F" cx="42" cy="60" r="3"/>
+	<circle fill="#E0002F" cx="42" cy="96" r="3"/>
+	<circle fill="#11AAFF" cx="96" cy="24" r="3"/>
+	<circle fill="#11AAFF" cx="24" cy="42" r="3"/>
+	<circle fill="#11AAFF" cx="60" cy="42" r="3"/>
+	<circle fill="#E0002F" cx="78" cy="42" r="3"/>
+	<circle fill="#E0002F" cx="42" cy="42" r="3"/>
+	<circle fill="#E0002F" cx="96" cy="42" r="3"/>
+	<circle fill="#11AAFF" cx="24" cy="78" r="3"/>
+	<circle fill="#E0002F" cx="60" cy="78" r="3"/>
+	<circle fill="#E0002F" cx="78" cy="78" r="3"/>
+	<circle fill="#E0002F" cx="42" cy="78" r="3"/>
+	<circle fill="#11AAFF" cx="96" cy="78" r="3"/>
+	<circle fill="#E0002F" cx="96" cy="60" r="3"/>
+	<circle fill="#E0002F" cx="96" cy="96" r="3"/>
+</g>
+</svg>
