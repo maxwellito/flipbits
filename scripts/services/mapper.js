@@ -26,13 +26,13 @@ Mapper.prototype.fill = function () {
 }
 
 Mapper.prototype.invertFill = function () {
-  for (let i = 0; i < this.size; i++) {
+  for (var i = 0; i < this.size; i++) {
     this.stack[i] = this.stack[i] ? 0 : 1;
   }
 }
 
 Mapper.prototype.routing = function (fillLength) {
-  let pos
+  var pos
   while (fillLength > 0) {
     pos = Math.floor(this.size * Math.random())
     if (!this.stack[pos]) {
@@ -43,7 +43,7 @@ Mapper.prototype.routing = function (fillLength) {
 }
 
 Mapper.prototype.randomFill = function () {
-  let val
+  var val
   for (var i = 0; i < this.size; i++) {
     val = Math.round(Math.random())
     this.stack[i] = val

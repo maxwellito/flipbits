@@ -4,7 +4,7 @@ function pointerglitch () {
       redirect = []
   
   // Generate the array map
-  for (let i = 0; i < redirectLength; i++) redirect.push(i)
+  for (var i = 0; i < redirectLength; i++) redirect.push(i)
   redirect.sort(function () {return Math.random() - 0.5})
 
   // Function to get random points

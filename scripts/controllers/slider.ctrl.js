@@ -100,9 +100,9 @@ SliderCtrl.prototype.slideStart = function (e) {
 SliderCtrl.prototype.slideUpdate = function (e) {
   var newPos = this.isTouchSlide ? e.touches[0].pageY : e.screenY,
       translate = Math.min(this.inputHeight, Math.max(0, newPos - this.slideStart)),
-      ratio = translate / this.inputHeight;
+      ratio = translate / this.inputHeight,
+      oldValue = this.value || 0
 
-  let oldValue = this.value || 0
   this.value = Math.floor(this.rangeMax * ratio)
   this.counterEl.textContent = this.value
   this.inputThumbEl.style.top = translate + 'px'
