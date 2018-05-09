@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@raspberrypi:maxwellito/slidom.git"
+    "url": "https://github.com/maxwellito/flipbits.git"
   },
   "author": "maxwellito",
   "license": "MIT",
