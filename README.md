@@ -2,6 +2,8 @@
 
 **the best random powered AI to take decisions**
 
+Try it [here](https://maxwellito.github.io/flipbits/)
+
 To get more information about how this engine works, please read this [page](https://en.wikipedia.org/wiki/Sarcasm).
 
 ## FAQ
