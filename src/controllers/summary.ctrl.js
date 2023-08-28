@@ -68,15 +68,16 @@ SummaryCtrl.prototype.set = function (dotLength, posDots) {
     // this.el.classList.add('success')
     this.resultEl.textContent = 'Yes!'
     this.backgroundColor = COLOR_SUCCESS;
+    this.startBackgroundFade();
   }
   else if (extraPosDots < 0) {
     // this.el.classList.add('fail')
     this.resultEl.textContent = 'Nope.'
     this.backgroundColor = COLOR_FAIL;
+    this.startBackgroundFade();
   }
   else {
     this.resultEl.textContent = 'Try again';
-    this.backgroundColor = null;
     this.themeColorDom.setAttribute('content', '#000');
   }
 
@@ -85,9 +86,6 @@ SummaryCtrl.prototype.set = function (dotLength, posDots) {
 
 SummaryCtrl.prototype.show = function () {
   this.el.style.display = '';
-  if (this.backgroundColor) {
-    this.startBackgroundFade();
-  }
 }
 
 SummaryCtrl.prototype.hide = function () {
@@ -96,8 +94,7 @@ SummaryCtrl.prototype.hide = function () {
 
 SummaryCtrl.prototype.reset = function () {
   this.el.classList.remove('ready')
-  this.el.classList.remove('success')
-  this.el.classList.remove('fail')
+  this.el.style.backgroundColor = '#000';
 
   cancelAnimationFrame(this.backgroundFadeTimeout);
   clearTimeout(this.backgroundFadeTimeout);
@@ -112,6 +109,7 @@ SummaryCtrl.prototype.startBackgroundFade = function () {
   if (this.backgroundFadeTimeout) {
     return;
   }
+  this.backgroundFade = 0;
   this.backgroundFadeTimeout = setTimeout(this.backgroundFadeUpdate, 800);
 }
 
