@@ -1,3 +1,6 @@
+var COLOR_SUCCESS = [15, 171, 255];
+var COLOR_FAIL = [224, 0, 67];
+
 /**
  * Summary Controller
  * Display the final information about the
@@ -6,6 +9,10 @@
 function SummaryCtrl (retryCallback) {
 
   this.retryCallback = retryCallback || function () {};
+  this.backgroundFade = 0;
+  this.backgroundFadeTimeout = 0;
+  this.backgroundFadeUpdate = this.backgroundFadeUpdate.bind(this);
+  this.themeColorDom = window.document.querySelector('meta[name="theme-color"]');
   
   // Start creation
   this.setupTemplate()
@@ -31,7 +38,7 @@ SummaryCtrl.prototype.setupTemplate = function () {
   this.detailsNegEl = dom.create('div', 'summary-item bordered pin-neg')
   this.detailsEl = dom.create('div', 'summary-bloc', [this.detailsPosEl, this.detailsNegEl])
 
-  var social = document.getElementById('social')
+  var social = document.createElement('div')
   social.classList.add('summary-bloc', 'summary-item', 'bordered')
 
   this.el = dom.create('div', 'summary-ctrl', [
@@ -58,15 +65,19 @@ SummaryCtrl.prototype.set = function (dotLength, posDots) {
 
   var extraPosDots = posDots - (dotLength/2)
   if (extraPosDots > 0) {
-    this.el.classList.add('success')
-    this.resultEl.textContent = 'Yas!'
+    // this.el.classList.add('success')
+    this.resultEl.textContent = 'Yes!'
+    this.backgroundColor = COLOR_SUCCESS;
   }
   else if (extraPosDots < 0) {
-    this.el.classList.add('fail')
+    // this.el.classList.add('fail')
     this.resultEl.textContent = 'Nope.'
+    this.backgroundColor = COLOR_FAIL;
   }
   else {
-    this.resultEl.textContent = 'Try again'
+    this.resultEl.textContent = 'Try again';
+    this.backgroundColor = null;
+    this.themeColorDom.setAttribute('content', '#000');
   }
 
   this.el.classList.add('ready')
@@ -74,6 +85,9 @@ SummaryCtrl.prototype.set = function (dotLength, posDots) {
 
 SummaryCtrl.prototype.show = function () {
   this.el.style.display = '';
+  if (this.backgroundColor) {
+    this.startBackgroundFade();
+  }
 }
 
 SummaryCtrl.prototype.hide = function () {
@@ -85,5 +99,34 @@ SummaryCtrl.prototype.reset = function () {
   this.el.classList.remove('success')
   this.el.classList.remove('fail')
 
-  this.resultEl.textContent = ''
+  cancelAnimationFrame(this.backgroundFadeTimeout);
+  clearTimeout(this.backgroundFadeTimeout);
+  this.backgroundFadeTimeout = 0;
+
+  this.resultEl.textContent = '';
+  this.themeColorDom.setAttribute('content', '#000');
+}
+
+
+SummaryCtrl.prototype.startBackgroundFade = function () {
+  if (this.backgroundFadeTimeout) {
+    return;
+  }
+  this.backgroundFadeTimeout = setTimeout(this.backgroundFadeUpdate, 800);
+}
+
+SummaryCtrl.prototype.backgroundFadeUpdate = function () {
+  this.backgroundFade += 1/32;
+  var backgroundFade = this.backgroundFade;
+  var rgb = this.backgroundColor.map(function(x) {return Math.floor(x*backgroundFade)});
+  var color = 'rgb('+rgb[0]+', '+rgb[1]+', '+rgb[2]+')';
+
+  this.themeColorDom.setAttribute('content', color);
+  this.el.style.backgroundColor = color;
+
+  if (this.backgroundFade === 1) {
+    this.backgroundFadeTimeout = 0;
+  } else {
+    this.backgroundFadeTimeout = requestAnimationFrame(this.backgroundFadeUpdate);
+  }
 }

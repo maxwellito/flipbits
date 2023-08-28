@@ -46,7 +46,7 @@ App.prototype.scroll = function () {
     this.grid.setDot(dot, this.map.stack[dot])
   }
   
-  window.scrollTo(0, this.scrollLength * ratio)
+  document.body.scrollTo(0, this.scrollLength * ratio)
 
   if (ratio === 1) {
     this.scrollEnd()
