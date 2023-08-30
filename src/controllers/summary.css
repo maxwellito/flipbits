@@ -24,6 +24,15 @@
 .summary-ctrl.ready > *:nth-child(2) { transition-delay: .4s; }
 .summary-ctrl.ready > *:nth-child(3) { transition-delay: .8s; }
 
+.summary-ctrl.success {
+  background-color: #1af;
+  color: #000;
+}
+.summary-ctrl.fail {
+  background-color: #e00043;
+  color: #fff;
+}
+
 .summary-bloc {
   display: flex;
 }
@@ -44,11 +53,11 @@
 
 .summary-item.bordered {
   border: none;
-  border-top: 1px solid #fff;
+  border-top: 1px solid currentColor;
 }
 
 .summary-item.bordered + .summary-item.bordered {
-  border-left: 1px solid #fff;
+  border-left: 1px solid currentColor;
 }
 
 .summary-counter {

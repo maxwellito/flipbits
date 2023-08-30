@@ -1,5 +1,5 @@
 var APP_NAME = 'flipbits',
-    APP_VERSION = 3,
+    APP_VERSION = 4,
     CACHE_NAME = APP_NAME + '_' + APP_VERSION;
 var filesToCache = [
   './',

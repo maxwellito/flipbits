@@ -40,6 +40,7 @@ SummaryCtrl.prototype.setupTemplate = function () {
 
   var social = document.createElement('div')
   social.classList.add('summary-bloc', 'summary-item', 'bordered')
+  social.style.marginBottom = '1rem'
 
   this.el = dom.create('div', 'summary-ctrl', [
     this.counterEl,
@@ -65,13 +66,13 @@ SummaryCtrl.prototype.set = function (dotLength, posDots) {
 
   var extraPosDots = posDots - (dotLength/2)
   if (extraPosDots > 0) {
-    // this.el.classList.add('success')
+    this.el.classList.add('success')
     this.resultEl.textContent = 'Yes!'
     this.backgroundColor = COLOR_SUCCESS;
     this.startBackgroundFade();
   }
   else if (extraPosDots < 0) {
-    // this.el.classList.add('fail')
+    this.el.classList.add('fail')
     this.resultEl.textContent = 'Nope.'
     this.backgroundColor = COLOR_FAIL;
     this.startBackgroundFade();
@@ -93,11 +94,13 @@ SummaryCtrl.prototype.hide = function () {
 }
 
 SummaryCtrl.prototype.reset = function () {
-  this.el.classList.remove('ready')
+  this.el.classList.remove('ready');
+  this.el.classList.remove('success');
+  this.el.classList.remove('fail');
+
   this.el.style.backgroundColor = '#000';
 
   cancelAnimationFrame(this.backgroundFadeTimeout);
-  clearTimeout(this.backgroundFadeTimeout);
   this.backgroundFadeTimeout = 0;
 
   this.resultEl.textContent = '';
@@ -106,11 +109,11 @@ SummaryCtrl.prototype.reset = function () {
 
 
 SummaryCtrl.prototype.startBackgroundFade = function () {
+  this.backgroundFade = 0;
   if (this.backgroundFadeTimeout) {
     return;
   }
-  this.backgroundFade = 0;
-  this.backgroundFadeTimeout = setTimeout(this.backgroundFadeUpdate, 800);
+  this.backgroundFadeUpdate();
 }
 
 SummaryCtrl.prototype.backgroundFadeUpdate = function () {

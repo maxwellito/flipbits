@@ -12,6 +12,7 @@
   margin: 2rem 0;
   font-size: 4rem;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .slider-counter:before,
@@ -98,4 +99,5 @@
 
 .slider-intro {
   line-height: 1;
+  margin-bottom: 3rem;
 }
